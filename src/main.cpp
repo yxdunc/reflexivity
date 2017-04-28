@@ -9,7 +9,11 @@ int main()
 	std::cout << "Starting: " <<std::endl;
 	reflexive_instance.execute("action_1", Variant_Value(55.5));
 	reflexive_instance.execute("action_1", Variant_Value(.0));
-//	reflexive_instance.execute("action_1", Variant_Value(55)); // this will fail because action_1 is of type double
-	reflexive_instance.execute("action_2", Variant_Value(42)); // action_2 doesn't exist so nothing happen
+
+	// wrong type for function call so nothing happens
+	reflexive_instance.execute("action_1", Variant_Value(55));
+
+	// action_2 doesn't exist so nothing happen
+	reflexive_instance.execute("action_2", Variant_Value(42));
 	return 0;
 }

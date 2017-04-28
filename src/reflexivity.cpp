@@ -13,8 +13,10 @@ void		Reflexivity::register_action(std::string action_name, Member_Action action
 
 void		Reflexivity::execute(std::string action_name, Variant_Value const &param)
 {
+ 	// Method called unregistered
     if(m_action_map.find(action_name) == m_action_map.end()) {return ;}
-    assert(param.type() == m_action_param_type.at(action_name)); // Function called with wrong param type
+	// Method called with wrong param type
+    if(param.type() != m_action_param_type.at(action_name))  {return ;}
 
     auto action = std::bind(m_action_map.at(action_name), this, std::placeholders::_1);
 
